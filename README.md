@@ -1,2 +1,2 @@
-# InfoVis.github.io
+# InfoVis
 Course Project for Information Visualization
