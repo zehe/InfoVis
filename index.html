@@ -1,0 +1,63 @@
+
+<html>
+    <head>
+        <style>
+            
+            body {
+                margin: 0px;
+                font-family: Verdana, Geneva, sans-serif;
+            }
+            
+            h1 {
+                background-color: black;
+                color: white;
+                padding: 5px 6px;
+                margin: 0;
+            }
+            
+            h2 {
+                margin-left: 10px;
+            }
+            
+            #form {
+                margin-left: 10px;
+            }
+            ul, li {
+                padding-left: 0;
+                margin-left: 10px
+            }
+        </style>
+        <title>Gapiminder-Wealth and Health</title>
+    </head>
+    <body>
+        <h1>Gapiminder - Wealth and Health of Nations</h1>
+        <h2>Countries</h2>
+        <form id="form">
+            <label>Name</label>
+            <input type="text" id="country">
+            <input type="button" value="Add" name="add" onclick="addToList()">
+        </form>
+        
+        <hr>
+        
+        <div>
+            <ul style="list-style-type:none" id="countrylist">
+                <li>USA</li>
+                <li>Mexico</li>
+                <li>Canada</li>
+            </ul>        
+        </div>
+
+        
+    </body>
+    
+    <script type="text/javascript">
+        function addToList(){
+            var newCountry = document.getElementById("country").value;
+            var countryList = document.getElementById("countrylist");
+            var newEntry = document.createElement("li");
+            newEntry.innerHTML = newCountry;
+            countryList.appendChild(newEntry);
+        }
+    </script>
+</html>
