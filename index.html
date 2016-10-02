@@ -15,13 +15,14 @@
                 margin: 0;
             }
             
+            #input-div {
+                margin-left: 10px;
+            }
+            
             h2 {
                 margin-left: 10px;
             }
             
-            #form {
-                margin-left: 10px;
-            }
             ul, li {
                 padding-left: 0;
                 margin-left: 10px
@@ -32,32 +33,30 @@
     <body>
         <h1>Gapiminder - Wealth and Health of Nations</h1>
         <h2>Countries</h2>
-        <form id="form">
-            <label>Name</label>
-            <input type="text" id="country">
-            <input type="button" value="Add" name="add" onclick="addToList()">
-        </form>
         
         <hr>
         
-        <div>
-            <ul style="list-style-type:none" id="countrylist">
-                <li>USA</li>
-                <li>Mexico</li>
-                <li>Canada</li>
-            </ul>        
-        </div>
+        <div id="input-div"></div>
 
         
     </body>
     
-    <script type="text/javascript">
-        function addToList(){
-            var newCountry = document.getElementById("country").value;
-            var countryList = document.getElementById("countrylist");
-            var newEntry = document.createElement("li");
-            newEntry.innerHTML = newCountry;
-            countryList.appendChild(newEntry);
-        }
-    </script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script type="text/javascript">
+    var data;
+    d3.json("gapminder.json", function(error, result) {
+        data = result;
+        render();
+    })
+    
+    function render() {
+        var update = d3.select("#input-div").selectAll("div").data(data);
+        
+        update.enter()
+                .append("div")
+                .attr("class", "dataset")
+                .text(function(d) {return d.name;});
+    }
+</script>
 </html>
